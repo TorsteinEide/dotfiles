@@ -2,7 +2,7 @@
 
 Contains my configurations for nvim and kitty.
 
-install and run setup
+## install and run setup
 ```
 $ ./setup.sh
 ```
