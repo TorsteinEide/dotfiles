@@ -18,7 +18,7 @@ select_wallpaper(){
 
     case $choice in 
         forest) wallpaper="wallpapers/forest.jpg";;
-        *) echo "Invalid choice, defaulting to forest.jpg"; wallpaper="wallpapers/forest.jpg";;
+        *) echo "Invalid choice, not setting wallpaper"; return;;
     esac
 
     change_wallpaper "$(pwd)/$wallpaper"
