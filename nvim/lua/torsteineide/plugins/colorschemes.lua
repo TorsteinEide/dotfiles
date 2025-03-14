@@ -15,9 +15,17 @@ return {
 		priority = 1000,
 		config = function()
 			vim.cmd([[colorscheme dayfox]]) -- Default colorscheme
+
+			-- Autocommand to run terminal command after the colorscheme is loaded
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "dayfox", -- You can specify the exact colorscheme
+				callback = function()
+					-- Run the terminal command to change Kitty's background
+					vim.fn.system("bash -c 'kitty @ set-colors background=#1e1e2e'")
+				end,
+			})
 		end,
 	},
-
 	-- Required dependency
 	{ "nvim-lua/plenary.nvim" },
 
