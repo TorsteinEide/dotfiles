@@ -14,7 +14,7 @@ return {
 		"EdenEast/nightfox.nvim",
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme dayfox]]) -- Default colorscheme
+			vim.cmd([[colorscheme cyberdream]]) -- Default colorscheme
 
 			-- Autocommand to run terminal command after the colorscheme is loaded
 			vim.api.nvim_create_autocmd("ColorScheme", {
