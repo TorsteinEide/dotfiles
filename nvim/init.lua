@@ -1,2 +1,4 @@
-require("torsteineide.core")
-require("torsteineide.lazy")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
+require("terminal")
+require("keybinds")

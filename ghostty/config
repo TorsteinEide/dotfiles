@@ -1,0 +1,5 @@
+background = 000000
+font-family = 0xProto Nerd Font
+font-size = 15
+background-opacity = 0.85
+gtk-titlebar = false

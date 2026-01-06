@@ -26,8 +26,9 @@ automatically-unhide-macos-hidden-apps = true
 
 #Screen alignment start
 [workspace-to-monitor-force-assignment]
-Q = 'secondary'
-E = 'secondary'
+Monitor1 = 'secondary'
+Monitor2 = 'secondary'
+Vaktmester = 'secondary'
 M = 'main'
 S = 'main'
 T = 'main'
@@ -38,8 +39,13 @@ T = 'main'
 
 [mode.main.binding]
     alt-enter = '''exec-and-forget
-                    open -na iTerm
+                    open -na ghostty
                 '''
+    alt-b = '''exec-and-forget
+                    open -na firefox 
+                '''
+
+
     alt-w = 'close'
 
     #Movement start
@@ -61,8 +67,9 @@ T = 'main'
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
-    alt-q = 'workspace Q'
-    alt-e = 'workspace E'
+    alt-q = 'workspace Monitor1'
+    alt-e = 'workspace Monitor2'
+    alt-v = 'workspace Vaktmester'
     alt-m = 'workspace Music'
     alt-s = 'workspace Slack'
     alt-t = 'workspace Teams'
@@ -71,8 +78,9 @@ T = 'main'
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-q = 'move-node-to-workspace Q'
-    alt-shift-e = 'move-node-to-workspace E'
+    alt-shift-q = 'move-node-to-workspace Monitor1'
+    alt-shift-e = 'move-node-to-workspace Monitor2'
+    alt-shift-v = 'move-node-to-workspace Vaktmester'
     alt-shift-m = 'move-node-to-workspace Music'
     alt-shift-s = 'move-node-to-workspace Slack'
     alt-shift-t = 'move-node-to-workspace Teams'
