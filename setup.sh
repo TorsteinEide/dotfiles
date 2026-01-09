@@ -7,8 +7,11 @@ ask() {
   esac
 }
 
+# change_wallpaper() {
+#   osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$1\""
+# }
 change_wallpaper() {
-  osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$1\""
+  osascript -e "tell application \"System Events\" to set picture of every desktop to POSIX file \"$1\""
 }
 
 # Wallpaper selection
