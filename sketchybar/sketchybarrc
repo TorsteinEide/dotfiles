@@ -1,0 +1,113 @@
+# https://github.com/FelixKratz/dotfiles
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+##### Bar Appearance #####
+
+sketchybar --bar position=top height=40 topmost=0 margin=0 color=0x00000000 border_color=0x00000000 y_offset=4 padding_left=9 padding_right=9
+
+##### Changing Defaults #####
+
+default=(
+  padding_left=5
+  padding_right=5
+  icon.font="Hack Nerd Font:Mono:17.0"
+  label.font="Hack Nerd Font:Mono:14.0"
+  icon.color=0xffffffff
+  label.color=0xffffffff
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+)
+sketchybar --default "${default[@]}"
+
+##### Adding left brackets and items #####
+
+# Workspaces workspaces
+source "$PLUGIN_DIR/workspaces.sh"
+
+## Built in display bracket
+sketchybar \
+  --add bracket app_group \
+  space.normal_header \
+  space.Music \
+  space.Slack \
+  space.Teams \
+  space.1 \
+  space.2 \
+  space.3 \
+  --set app_group \
+  background.drawing=on \
+  background.color=0x99000000 \
+  background.corner_radius=10 \
+  background.height=36 \
+  background.border_width=2 \
+  background.border_color="$ACTIVE_COLOR"
+
+## Monitor bracket
+sketchybar \
+  --add bracket monitor_group \
+  space.monitor_header \
+  space.M1 \
+  space.M2 \
+  space.M3 \
+  --set monitor_group \
+  background.drawing=on \
+  background.color=0x99000000 \
+  background.corner_radius=10 \
+  background.height=36 \
+  background.border_width=2 \
+  background.border_color="$ACTIVE_COLOR"
+
+##### Adding Right Items #####
+
+sketchybar --add item clock right \
+           --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh" \
+           --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+           --add item battery right \
+           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+           --subscribe battery system_woke power_source_change
+
+## Setup keyboard ----- Keyboard is in a weird format completely vibe coded TODO: Look into keyboard.sh plugin
+"$PLUGIN_DIR/keyboard.sh" --setup
+
+sketchybar --add item  wifi right                              \
+           --set       wifi script="$PLUGIN_DIR/wifi.sh" \
+                                  update_freq=30                     \
+                                  padding_left=0                     \
+                                  padding_right=0                    \
+                                  background.border_width=0          \
+                                  background.corner_radius=3         \
+                                  background.padding_right=5 \
+                                  background.height=20               \
+           --subscribe wifi wifi_change                        
+
+sketchybar \
+  --add bracket info_group \
+    wifi \
+    keyboard \
+    clock \
+    volume \
+    battery \
+  --set info_group \
+    background.drawing=on \
+    background.color=0x99000000 \
+    background.corner_radius=10 \
+    background.height=36 \
+    background.border_width=2 \
+    background.border_color="$GREEN"
+
+## Set Padding to create gaps from outer items in bracket
+sketchybar \
+  --set space.normal_header padding_left=8 \
+  --set space.3 padding_right=8 \
+  --set space.monitor_header padding_left=8 \
+  --set space.M3 padding_right=8 \
+  --set wifi padding_left=8 \
+  --set clock padding_right=8 
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
