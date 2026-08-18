@@ -42,7 +42,7 @@ select_theme() {
   esac
 
   change_wallpaper "$(pwd)/wallpapers/$wallpaper"
-  borders active_color="$active_color" inactive_color="$inactive_color" width=20.0
+  borders active_color="$active_color" inactive_color="$inactive_color" width=15.0
 
 }
 
